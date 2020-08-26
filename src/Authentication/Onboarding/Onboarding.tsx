@@ -5,7 +5,7 @@ import {interpolateColor, useScrollHandler} from "react-native-redash";
 import {BORDER_RADIUS, SLIDE_HEIGHT, width} from '../../helpers/constants';
 import Slide from "./Slide";
 import Subslide from "./Subslide";
-import Dot from "../../components/Dot";
+import Dot from "./Dot";
 import {slides} from "../../model/Slides";
 
 const Onboarding = () => {

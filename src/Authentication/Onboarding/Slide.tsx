@@ -1,11 +1,16 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from "react-native";
-import {BORDER_RADIUS, SLIDE_HEIGHT, width} from '../../helpers/constants';
+import {Image, ImageRequireSource, StyleSheet, View} from "react-native";
+import {SLIDE_HEIGHT, width} from '../../helpers/constants';
+import {Text} from "../../components";
 
 interface SlideProps {
     title: string;
     right?: boolean;
-    picture: number;
+    picture: {
+        src: ImageRequireSource;
+        width: number;
+        height: number;
+    };
 }
 
 const Slide = ({title, right, picture}: SlideProps) => {
@@ -13,7 +18,12 @@ const Slide = ({title, right, picture}: SlideProps) => {
     return (
         <View style={styles.container}>
             <View style={styles.underlay}>
-                <Image source={picture} style={styles.picture}/>
+                <Image source={picture.src}
+                       style={{
+                           width,
+                           height: (width * picture.height) / picture.width
+                       }}
+                />
             </View>
             <View style={[styles.titleContainer, {
                 transform: [
@@ -22,7 +32,7 @@ const Slide = ({title, right, picture}: SlideProps) => {
                     {rotate: right ? "-90deg" : "90deg"}
                 ]
             }]}>
-                <Text style={styles.title}>{title}</Text>
+                <Text variant={"hero"}>{title}</Text>
             </View>
         </View>
     );
@@ -38,21 +48,9 @@ const styles = StyleSheet.create({
         height: 100,
         justifyContent: "center",
     },
-    title: {
-        fontSize: 80,
-        color: "white",
-        textAlign: "center",
-        lineHeight: 80,
-    },
     underlay: {
         ...StyleSheet.absoluteFillObject,
+        alignItems: "center",
         justifyContent: "flex-end",
-    },
-    picture: {
-        ...StyleSheet.absoluteFillObject,
-        top: BORDER_RADIUS / 1.25,
-        borderBottomRightRadius: BORDER_RADIUS,
-        width: undefined,
-        height: undefined
     },
 })
