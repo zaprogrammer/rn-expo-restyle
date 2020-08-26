@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
-import {StyleSheet, View} from "react-native";
-import Animated, {divide, multiply} from 'react-native-reanimated';
+import {Image, StyleSheet, View} from "react-native";
+import Animated, {divide, Extrapolate, interpolate, multiply} from 'react-native-reanimated';
 import {interpolateColor, useScrollHandler} from "react-native-redash";
 import {BORDER_RADIUS, SLIDE_HEIGHT, width} from '../../helpers/constants';
 import Slide from "./Slide";
@@ -19,6 +19,24 @@ const Onboarding = () => {
     return (
         <View style={styles.container}>
             <Animated.View style={[styles.slider, {backgroundColor}]}>
+                {slides.map(({picture}, index) => {
+                    const opacity = interpolate(x, {
+                        inputRange: [(index - 1) * width, index * width, (index + 1) * width],
+                        outputRange: [0, 1, 0],
+                        extrapolate: Extrapolate.CLAMP
+                    });
+                    return (
+                        <Animated.View style={[styles.underlay, {opacity}]}>
+                            <Image source={picture.src}
+                                   style={{
+                                       width,
+                                       height: (width * picture.height) / picture.width
+                                   }}
+                            />
+                        </Animated.View>
+                    );
+                })}
+
                 <Animated.ScrollView horizontal
                                      ref={scroll}
                                      snapToInterval={width}
@@ -26,8 +44,8 @@ const Onboarding = () => {
                                      showsHorizontalScrollIndicator={false}
                                      bounces={false}
                                      {...scrollHandler}>
-                    {slides.map(({title, picture}, index) => (
-                        <Slide key={index} {...{title, picture}} right={!!(index % 2)}/>
+                    {slides.map(({title}, index) => (
+                        <Slide key={index} {...{title}} right={!!(index % 2)}/>
                     ))}
                 </Animated.ScrollView>
             </Animated.View>
@@ -75,6 +93,11 @@ const styles = StyleSheet.create({
     slider: {
         height: SLIDE_HEIGHT,
         borderBottomEndRadius: BORDER_RADIUS
+    },
+    underlay: {
+        ...StyleSheet.absoluteFillObject,
+        alignItems: "center",
+        justifyContent: "flex-end",
     },
     footer: {
         flex: 1
