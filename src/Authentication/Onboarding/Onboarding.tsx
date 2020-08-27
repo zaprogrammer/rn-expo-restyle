@@ -2,13 +2,17 @@ import React, {useRef} from 'react';
 import {Image, StyleSheet, View} from "react-native";
 import Animated, {divide, Extrapolate, interpolate, multiply} from 'react-native-reanimated';
 import {interpolateColor, useScrollHandler} from "react-native-redash";
-import {BORDER_RADIUS, SLIDE_HEIGHT, width} from '../../helpers/constants';
+import {SLIDE_HEIGHT, width} from '../../helpers/constants';
 import Slide from "./Slide";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 import {slides} from "../../model/Slides";
+import {theme} from "../../components";
+import {Routes, StackNavigationProps} from "../../components/Navigation";
 
-const Onboarding = () => {
+export const assets = slides.map(slide => slide.picture.src);
+
+const Onboarding = ({navigation}: StackNavigationProps<Routes, "Onboarding">) => {
     const scroll = useRef<Animated.ScrollView>(null);
     const {scrollHandler, x} = useScrollHandler();
     const backgroundColor = interpolateColor(x, {
@@ -63,19 +67,26 @@ const Onboarding = () => {
                         width: width * slides.length,
                         transform: [{translateX: multiply(x, -1)}]
                     }}>
-                        {slides.map(({subTitle, description}, index) => (
-                            <Subslide
-                                key={index}
-                                onPress={() => {
-                                    if (scroll.current) {
-                                        scroll.current
-                                            .getNode()
-                                            .scrollTo({x: width * (index + 1), animated: true});
-                                    }
-                                }}
-                                last={index === slides.length - 1}
-                                {...{subTitle, description}}/>
-                        ))}
+                        {slides.map(({subTitle, description}, index) => {
+                            const last = index === slides.length - 1;
+                            return (
+                                <Subslide
+                                    key={index}
+                                    onPress={() => {
+                                        if (last) {
+                                            navigation.navigate("Welcome");
+                                        } else {
+                                            if (scroll.current) {
+                                                scroll.current
+                                                    .getNode()
+                                                    .scrollTo({x: width * (index + 1), animated: true});
+                                            }
+                                        }
+
+                                    }}
+                                    {...{subTitle, description, last}}/>
+                            );
+                        })}
                     </Animated.View>
                 </View>
             </View>
@@ -92,7 +103,7 @@ const styles = StyleSheet.create({
     },
     slider: {
         height: SLIDE_HEIGHT,
-        borderBottomEndRadius: BORDER_RADIUS
+        borderBottomEndRadius: theme.borderRadii.xl
     },
     underlay: {
         ...StyleSheet.absoluteFillObject,
@@ -105,11 +116,11 @@ const styles = StyleSheet.create({
     footerContent: {
         flex: 1,
         backgroundColor: "white",
-        borderTopStartRadius: BORDER_RADIUS
+        borderTopStartRadius: theme.borderRadii.xl
     },
     pagination: {
         ...StyleSheet.absoluteFillObject,
-        height: BORDER_RADIUS / 1.25,
+        height: theme.borderRadii.xl / 1.25,
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
