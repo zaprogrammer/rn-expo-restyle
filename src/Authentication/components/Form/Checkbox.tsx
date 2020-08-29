@@ -1,5 +1,5 @@
 import React from 'react';
-import theme, {Box, Text} from "../Theme";
+import {Box, Text, useTheme} from "../../../components";
 import {Feather as Icon} from "@expo/vector-icons";
 import {RectButton} from "react-native-gesture-handler";
 
@@ -10,9 +10,11 @@ interface CheckboxProps {
 }
 
 const Checkbox = ({label, checked, onChange}: CheckboxProps) => {
+    const theme = useTheme();
 
     return (
         <RectButton onPress={onChange}
+                    activeOpacity={0}
                     style={{justifyContent: "center"}}>
             <Box flexDirection={"row"} alignItems={"center"}>
                 <Box

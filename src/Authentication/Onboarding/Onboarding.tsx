@@ -7,18 +7,19 @@ import Slide from "./Slide";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 import {slides} from "../../model/Slides";
-import {theme} from "../../components";
 import {Routes, StackNavigationProps} from "../../components/Navigation";
+import {makeStyle, Theme} from "../../components/Theme";
 
 export const assets = slides.map(slide => slide.picture.src);
 
 const Onboarding = ({navigation}: StackNavigationProps<Routes, "Onboarding">) => {
+    const styles = useStyles();
     const scroll = useRef<Animated.ScrollView>(null);
     const {scrollHandler, x} = useScrollHandler();
     const backgroundColor = interpolateColor(x, {
         inputRange: slides.map((_, i) => i * width),
         outputRange: slides.map(slide => slide.color),
-    })
+    });
 
     return (
         <View style={styles.container}>
@@ -96,7 +97,7 @@ const Onboarding = ({navigation}: StackNavigationProps<Routes, "Onboarding">) =>
 
 export default Onboarding;
 
-const styles = StyleSheet.create({
+const useStyles = makeStyle((theme: Theme) => ({
     container: {
         flex: 1,
         backgroundColor: "white"
@@ -125,4 +126,4 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     }
-});
+}));

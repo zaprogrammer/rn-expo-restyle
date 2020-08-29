@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {assets as authenticationAssets, AuthenticationNavigator} from "./src/Authentication";
-import {ThemeProvider} from "@shopify/restyle";
-import {LoadAssets, theme} from "./src/components";
 import {SafeAreaProvider} from "react-native-safe-area-context";
+import {ThemeProvider} from "@shopify/restyle";
+import {assets as authenticationAssets, AuthenticationNavigator} from "./src/Authentication";
+import {LoadAssets} from "./src/components";
+import {theme} from "./src/components/Theme";
 
 const fonts = {
     "SFProDisplay-Bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
