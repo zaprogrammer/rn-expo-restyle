@@ -30,7 +30,7 @@ const Onboarding = ({navigation}: StackNavigationProps<Routes, "Onboarding">) =>
                         extrapolate: Extrapolate.CLAMP
                     });
                     return (
-                        <Animated.View style={[styles.underlay, {opacity}]}>
+                        <Animated.View key={index} style={[styles.underlay, {opacity}]}>
                             <Image source={picture.src}
                                    style={{
                                        width,

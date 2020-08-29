@@ -3,12 +3,13 @@ import {createBox, createText, createTheme} from '@shopify/restyle'
 const palette = {
     primaryCyan: "#2CB9B0",
     secondaryBlue: "#0C0D34",
-    textBody: "rgba(12, 13, 52, 0.7)",
+    textBody: "rgba(12, 13, 52, 0.5)",
     textHero: "rgba(255, 255, 255, 1)",
-    grey: "rgba(12, 13, 52, 0.05)",
     lightGrey: "#F4F0EF",
+    grey: "#F4F0EF",
     white: "white",
     red: "#FF0000",
+    danger: "#FF0058",
 };
 
 
@@ -21,6 +22,7 @@ const theme = createTheme({
         grey: palette.grey,
         slideBg: palette.lightGrey,
         white: palette.white,
+        danger: palette.danger,
         red: palette.red,
     },
     spacing: {

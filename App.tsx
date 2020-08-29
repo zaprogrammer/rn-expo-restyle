@@ -2,6 +2,7 @@ import * as React from 'react';
 import {assets as authenticationAssets, AuthenticationNavigator} from "./src/Authentication";
 import {ThemeProvider} from "@shopify/restyle";
 import {LoadAssets, theme} from "./src/components";
+import {SafeAreaProvider} from "react-native-safe-area-context";
 
 const fonts = {
     "SFProDisplay-Bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
@@ -16,7 +17,9 @@ const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <LoadAssets {...{fonts, assets}}>
-                <AuthenticationNavigator/>
+                <SafeAreaProvider>
+                    <AuthenticationNavigator/>
+                </SafeAreaProvider>
             </LoadAssets>
         </ThemeProvider>
     );
