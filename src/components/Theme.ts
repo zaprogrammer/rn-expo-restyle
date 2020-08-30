@@ -3,6 +3,7 @@ import {ImageStyle, TextStyle, ViewStyle} from "react-native";
 
 const palette = {
     primaryCyan: "#2CB9B0",
+    primaryLight: "#E7F9F7",
     secondaryBlue: "#0C0D34",
     textBody: "rgba(12, 13, 52, 0.5)",
     textHero: "rgba(255, 255, 255, 1)",
@@ -11,12 +12,14 @@ const palette = {
     white: "white",
     red: "#FF0000",
     danger: "#FF0058",
+
 };
 
 
 export const theme = createTheme({
     colors: {
         primary: palette.primaryCyan,
+        primaryLight: palette.primaryLight,
         secondary: palette.secondaryBlue,
         body: palette.textBody,
         hero: palette.textHero,
@@ -25,6 +28,7 @@ export const theme = createTheme({
         white: palette.white,
         danger: palette.danger,
         red: palette.red,
+
     },
     spacing: {
         s: 8,

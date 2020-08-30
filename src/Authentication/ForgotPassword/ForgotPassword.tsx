@@ -13,7 +13,7 @@ const ForgotPasswordSchema = Yup.object().shape({
         .required('Required'),
 });
 
-const ForgotPassword = ({}: StackNavigationProps<Routes, "ForgotPassword">) => {
+const ForgotPassword = ({navigation}: StackNavigationProps<Routes, "ForgotPassword">) => {
 
     const footer = (
         <Footer title={"Don't work?"}
@@ -31,7 +31,7 @@ const ForgotPassword = ({}: StackNavigationProps<Routes, "ForgotPassword">) => {
     } = useFormik({
         initialValues: {email: ''},
         validationSchema: ForgotPasswordSchema,
-        onSubmit: (values) => console.log(values),
+        onSubmit: () => navigation.navigate("PasswordChanged"),
     });
 
     return (
@@ -59,7 +59,7 @@ const ForgotPassword = ({}: StackNavigationProps<Routes, "ForgotPassword">) => {
                         />
                     </Box>
                     <Box alignItems={"center"} marginTop={"m"}>
-                        <Button variant={"primary"} label={"Create your account"} onPress={handleSubmit}/>
+                        <Button variant={"primary"} label={"Reset password"} onPress={handleSubmit}/>
                     </Box>
                 </Box>
             </Box>
