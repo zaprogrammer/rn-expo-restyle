@@ -7,12 +7,12 @@ import Slide from "./Slide";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 import {slides} from "../../model/Slides";
-import {Routes, StackNavigationProps} from "../../components/Navigation";
+import {AuthenticationRoutes, StackNavigationProps} from "../../components/Navigation";
 import {makeStyle, Theme} from "../../components/Theme";
 
 export const assets = slides.map(slide => slide.picture.src);
 
-const Onboarding = ({navigation}: StackNavigationProps<Routes, "Onboarding">) => {
+const Onboarding = ({navigation}: StackNavigationProps<AuthenticationRoutes, "Onboarding">) => {
     const styles = useStyles();
     const scroll = useRef<Animated.ScrollView>(null);
     const {scrollHandler, x} = useScrollHandler();

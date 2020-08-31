@@ -6,7 +6,12 @@ export interface StackNavigationProps<ParamList extends ParamListBase, RouteName
     route: RouteProp<ParamList, RouteName>;
 }
 
-export type Routes = {
+export type AppRoutes = {
+    Authentication: undefined;
+    Home: undefined;
+};
+
+export type AuthenticationRoutes = {
     Onboarding: undefined;
     Welcome: undefined;
     Login: undefined;
@@ -14,3 +19,7 @@ export type Routes = {
     ForgotPassword: undefined;
     PasswordChanged: undefined;
 }
+
+export type HomeRoutes = {
+    OutfitIdeas: undefined;
+};

@@ -1,10 +1,10 @@
 import React from 'react';
-import {Routes, StackNavigationProps} from "../../components/Navigation";
+import {AuthenticationRoutes, StackNavigationProps} from "../../components/Navigation";
 import {Box, Button, Container, RoundedIcon, RoundedIconButton, Text, useTheme} from "../../components";
 
 const SIZE = 80;
 
-const PasswordChanged = ({navigation}: StackNavigationProps<Routes, "PasswordChanged">) => {
+const PasswordChanged = ({navigation}: StackNavigationProps<AuthenticationRoutes, "PasswordChanged">) => {
 
     const theme = useTheme();
 
