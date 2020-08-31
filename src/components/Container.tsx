@@ -40,10 +40,15 @@ const Container = ({children, footer, pattern}: ContainerProps) => {
                         height: imgHeight,
                         top: -imgHeight * 0.61,
                     }}/>
-                    <Box flex={1} borderRadius={"xl"} borderTopLeftRadius={"zero"} backgroundColor={"white"}>
+                    <Box
+                        flex={1}
+                        justifyContent={"center"}
+                        padding={"xl"}
+                        borderRadius={"xl"}
+                        borderTopLeftRadius={"zero"}
+                        backgroundColor={"white"}>
 
                         {children}
-
                     </Box>
                 </Box>
                 <Box backgroundColor={"secondary"} paddingTop={"m"}>

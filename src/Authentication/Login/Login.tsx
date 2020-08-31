@@ -38,65 +38,62 @@ const Login = ({navigation}: StackNavigationProps<AuthenticationRoutes, "Login">
     } = useFormik({
         initialValues: {email: '', password: '', remember: true},
         validationSchema: LoginSchema,
-        onSubmit: () => navigation.navigate("Home"),
+        onSubmit: () => navigation.navigate("OutfitIdeas"),
     });
 
     return (
         <Container pattern={0} {...{footer}}>
-            <Box padding={"xl"}>
-                <Text variant={"title1"} textAlign={"center"} marginBottom={"l"}>
-                    Welcome back
-                </Text>
-                <Text variant={"body"} textAlign={"center"}>
-                    Use your credentials below and login to your account
-                </Text>
+            <Text variant={"title1"} textAlign={"center"} marginBottom={"l"}>
+                Welcome back
+            </Text>
+            <Text variant={"body"} textAlign={"center"}>
+                Use your credentials below and login to your account
+            </Text>
 
-                <Box>
-                    <Box marginVertical={"m"}>
-                        <TextInput
-                            icon="mail" placeholder="Enter your Email"
-                            onChangeText={handleChange('email')}
-                            onBlur={handleBlur('email')}
-                            error={errors.email}
-                            touched={touched.email}
-                            autoCompleteType={"email"}
-                            autoCapitalize={"none"}
-                            returnKeyType={"next"}
-                            returnKeyLabel={"next"}
-                            onSubmitEditing={() => password.current?.focus()}
-                        />
-                    </Box>
+            <Box>
+                <Box marginVertical={"m"}>
                     <TextInput
-                        ref={password}
-                        icon="lock" placeholder="Enter your Password"
-                        onChangeText={handleChange('password')}
-                        onBlur={handleBlur('password')}
-                        error={errors.password}
-                        touched={touched.password}
-                        autoCompleteType="password"
-                        autoCapitalize="none"
-                        returnKeyType="go"
-                        returnKeyLabel="go"
-                        onSubmitEditing={() => handleSubmit()}
-                        secureTextEntry
+                        icon="mail" placeholder="Enter your Email"
+                        onChangeText={handleChange('email')}
+                        onBlur={handleBlur('email')}
+                        error={errors.email}
+                        touched={touched.email}
+                        autoCompleteType={"email"}
+                        autoCapitalize={"none"}
+                        returnKeyType={"next"}
+                        returnKeyLabel={"next"}
+                        onSubmitEditing={() => password.current?.focus()}
                     />
-                    <Box flexDirection={"row"} alignItems={"center"} justifyContent={"space-between"}
-                         marginVertical={"s"}>
-                        <Checkbox
-                            label={"Remember me"}
-                            checked={values.remember}
-                            onChange={() => setFieldValue("remember", !values.remember)}/>
-                        <BorderlessButton onPress={() => navigation.navigate("ForgotPassword")}>
-                            <Text variant={"button"} color={"primary"}>Forgot password?</Text>
-                        </BorderlessButton>
-                    </Box>
-                    <Box alignItems={"center"} marginTop={"m"}>
-                        <Button variant={"primary"} label={"Log into your account"} onPress={handleSubmit}/>
-                    </Box>
+                </Box>
+                <TextInput
+                    ref={password}
+                    icon="lock" placeholder="Enter your Password"
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                    error={errors.password}
+                    touched={touched.password}
+                    autoCompleteType="password"
+                    autoCapitalize="none"
+                    returnKeyType="go"
+                    returnKeyLabel="go"
+                    onSubmitEditing={() => handleSubmit()}
+                    secureTextEntry
+                />
+                <Box flexDirection={"row"} alignItems={"center"} justifyContent={"space-between"}
+                     marginVertical={"s"}>
+                    <Checkbox
+                        label={"Remember me"}
+                        checked={values.remember}
+                        onChange={() => setFieldValue("remember", !values.remember)}/>
+                    <BorderlessButton onPress={() => navigation.navigate("ForgotPassword")}>
+                        <Text variant={"button"} color={"primary"}>Forgot password?</Text>
+                    </BorderlessButton>
+                </Box>
+                <Box alignItems={"center"} marginTop={"m"}>
+                    <Button variant={"primary"} label={"Log into your account"} onPress={handleSubmit}/>
                 </Box>
             </Box>
         </Container>
-        // <Box></Box>
     );
 };
 

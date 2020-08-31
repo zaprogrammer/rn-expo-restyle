@@ -21,26 +21,24 @@ const PasswordChanged = ({navigation}: StackNavigationProps<AuthenticationRoutes
                         onPress={() => navigation.pop()}/>
                 </Box>
             }>
-            <Box flex={1} justifyContent={"center"} alignItems={"center"} padding={"xl"}>
-
+            <Box alignSelf={"center"}>
                 <RoundedIcon
                     name={"check"}
                     size={SIZE}
                     color={theme.colors.primary}
                     backgroundColor={"primaryLight"}/>
-
-                <Text variant={"title1"} marginVertical={"l"} textAlign={"center"}>
-                    Your password was successfully changed
-                </Text>
-                <Text variant={"body"} textAlign={"center"} marginBottom={"l"}>
-                    Close this window and login again
-                </Text>
-                <Box alignItems={"center"} marginTop={"m"}>
-                    <Button
-                        variant={"primary"}
-                        label={"Login again"}
-                        onPress={() => navigation.navigate("Login")}/>
-                </Box>
+            </Box>
+            <Text variant={"title1"} marginVertical={"l"} textAlign={"center"}>
+                Your password was successfully changed
+            </Text>
+            <Text variant={"body"} textAlign={"center"} marginBottom={"l"}>
+                Close this window and login again
+            </Text>
+            <Box alignItems={"center"} marginTop={"m"}>
+                <Button
+                    variant={"primary"}
+                    label={"Login again"}
+                    onPress={() => navigation.navigate("Login")}/>
             </Box>
         </Container>
     );
