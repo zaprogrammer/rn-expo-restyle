@@ -9,27 +9,32 @@ import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 interface ContainerProps {
     children: ReactNode;
     footer: ReactNode;
+    pattern: 0 | 1 | 2;
 }
 
-export const assets = [require("../../assets/patterns/01.jpg")];
+export const assets = [
+    require("../../assets/patterns/01.jpg"),
+    require("../../assets/patterns/02.jpg"),
+    require("../../assets/patterns/03.jpg")];
 const aspectRatio = 2000 / 3000;
 const imgHeight = width * aspectRatio;
 
-const Container = ({children, footer}: ContainerProps) => {
+const Container = ({children, footer, pattern}: ContainerProps) => {
     const insets = useSafeAreaInsets();
     const theme = useTheme();
+    const asset = assets[pattern];
     return (
         <KeyboardAwareScrollView scrollEnabled={false}>
             <Box height={height + (Platform.OS === "android" ? Constants.statusBarHeight : 0)}
                  backgroundColor={"secondary"}>
                 <Box backgroundColor={"white"}>
                     <Box borderBottomLeftRadius={"xl"} overflow={"hidden"} height={imgHeight * 0.61}>
-                        <Image source={assets[0]}
+                        <Image source={asset}
                                style={{width, height: imgHeight, borderBottomLeftRadius: theme.borderRadii.xl}}/>
                     </Box>
                 </Box>
                 <Box flex={1} overflow={"hidden"}>
-                    <Image source={assets[0]} style={{
+                    <Image source={asset} style={{
                         ...StyleSheet.absoluteFillObject,
                         width,
                         height: imgHeight,

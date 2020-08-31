@@ -1,7 +1,6 @@
 import React from 'react';
 import {Routes, StackNavigationProps} from "../../components/Navigation";
-import {Box, Button, CloseButton, Container, Text, useTheme} from "../../components";
-import {Feather as Icon} from "@expo/vector-icons";
+import {Box, Button, Container, RoundedIcon, RoundedIconButton, Text, useTheme} from "../../components";
 
 const SIZE = 80;
 
@@ -10,29 +9,36 @@ const PasswordChanged = ({navigation}: StackNavigationProps<Routes, "PasswordCha
     const theme = useTheme();
 
     return (
-        <Container footer={<CloseButton onPress={() => navigation.pop()}/>}>
-            <Box flex={1} justifyContent={"center"} alignItems={"center"}>
-                <Box height={SIZE} width={SIZE}
-                     style={{borderRadius: SIZE / 2}}
-                     backgroundColor={"primaryLight"}
-                     justifyContent={"center"}
-                     alignItems={"center"}
-                     marginBottom={"xl"}>
-                    <Icon name={"check"}
-                          size={32}
-                          color={theme.colors.primary}
-                          style={{textAlign: "center", justifyContent: "center"}}/>
+        <Container
+            pattern={0}
+            footer={
+                <Box flexDirection={"row"} justifyContent={"center"}>
+                    <RoundedIconButton
+                        name={"x"}
+                        size={60}
+                        color={theme.colors.secondary}
+                        backgroundColor={"white"}
+                        onPress={() => navigation.pop()}/>
                 </Box>
-                <Text variant={"title1"} textAlign={"center"} marginBottom={"l"}>
-                    Forgot Password?
+            }>
+            <Box flex={1} justifyContent={"center"} alignItems={"center"} padding={"xl"}>
+
+                <RoundedIcon
+                    name={"check"}
+                    size={SIZE}
+                    color={theme.colors.primary}
+                    backgroundColor={"primaryLight"}/>
+
+                <Text variant={"title1"} marginVertical={"l"} textAlign={"center"}>
+                    Your password was successfully changed
                 </Text>
                 <Text variant={"body"} textAlign={"center"} marginBottom={"l"}>
-                    Enter the email address associated with your account
+                    Close this window and login again
                 </Text>
                 <Box alignItems={"center"} marginTop={"m"}>
                     <Button
                         variant={"primary"}
-                        label={"Reset password"}
+                        label={"Login again"}
                         onPress={() => navigation.navigate("Login")}/>
                 </Box>
             </Box>

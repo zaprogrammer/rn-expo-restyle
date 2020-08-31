@@ -1,7 +1,8 @@
 import React, {forwardRef} from 'react';
 import {StyleSheet, TextInput as RNTextInput, TextInputProps as RNTextInputProps} from "react-native";
-import {Box, useTheme} from "../../../components";
+import {Box, useTheme} from "../Theme";
 import {Feather as Icon} from '@expo/vector-icons';
+import RoundedIcon from "../RoundedIcon";
 
 interface TextInputProps extends RNTextInputProps {
     icon: string;
@@ -12,7 +13,6 @@ interface TextInputProps extends RNTextInputProps {
 const TextInput = forwardRef<RNTextInput, TextInputProps>(
     ({icon, touched, error, ...props}, ref) => {
         const theme = useTheme();
-        const SIZE = theme.borderRadii.m * 2.5;
         const reColor = !touched ? "body" : (error ? "danger" : "primary");
         const color = theme.colors[reColor];
 
@@ -36,18 +36,11 @@ const TextInput = forwardRef<RNTextInput, TextInputProps>(
                         {...props}/>
                 </Box>
                 {touched && (
-                    <Box height={SIZE} width={SIZE}
-                         borderRadius={"m"}
-                         justifyContent={"center"}
-                         alignItems={"center"}
-                         backgroundColor={!error ? "primary" : "danger"}
-                         style={{borderRadius: SIZE / 2}}>
-                        <Icon
-                            name={!error ? "check" : "x"}
-                            color={"white"}
-                            size={theme.spacing.m}
-                            style={{textAlign: "center"}}/>
-                    </Box>
+                    <RoundedIcon
+                        name={!error ? "check" : "x"}
+                        size={theme.spacing.l}
+                        color={"white"}
+                        backgroundColor={!error ? "primary" : "danger"}/>
                 )}
             </Box>
         );

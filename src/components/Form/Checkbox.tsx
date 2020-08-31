@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Text, useTheme} from "../../../components";
+import {Box, Text, useTheme} from "../Theme";
 import {Feather as Icon} from "@expo/vector-icons";
 import {RectButton} from "react-native-gesture-handler";
 

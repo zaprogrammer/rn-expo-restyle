@@ -1,7 +1,6 @@
 import React from 'react';
 import {Linking} from 'react-native';
-import {Box, Button, Container, Text} from "../../components";
-import TextInput from "../components/Form/TextInput";
+import {Box, Button, Container, Text, TextInput} from "../../components";
 import {useFormik} from "formik";
 import * as Yup from 'yup';
 import Footer from "../components/Footer";
@@ -35,7 +34,7 @@ const ForgotPassword = ({navigation}: StackNavigationProps<Routes, "ForgotPasswo
     });
 
     return (
-        <Container {...{footer}}>
+        <Container pattern={2} {...{footer}}>
             <Box padding={"xl"} flex={1} justifyContent={"center"}>
                 <Text variant={"title1"} textAlign={"center"} marginBottom={"l"}>
                     Forgot Password?
