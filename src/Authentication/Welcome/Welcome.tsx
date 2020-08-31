@@ -3,6 +3,7 @@ import {Box, Button, Text} from "../../components";
 import {Image} from "react-native";
 import {width} from "../../helpers/constants";
 import {Routes, StackNavigationProps} from "../../components/Navigation";
+import {BorderlessButton} from "react-native-gesture-handler";
 
 const picture = {
     src: require('../../../assets/5.png'),
@@ -44,10 +45,13 @@ const Welcome = ({navigation}: StackNavigationProps<Routes, "Welcome">) => {
                         experience</Text>
                     <Button variant={"primary"} label={"Have an account? Login"} onPress={() =>
                         navigation.navigate("Login")}/>
-                    <Button variant={"default"} label={"Join us, it's Free"} onPress={() => {
-                    }}/>
-                    <Button variant={"transparent"} label={"Have an account? Login"} onPress={() => {
-                    }}/>
+                    <Button
+                        variant={"default"}
+                        label={"Join us, it's Free"}
+                        onPress={() => navigation.navigate("SignUp")}/>
+                    <BorderlessButton onPress={() => navigation.navigate("ForgotPassword")}>
+                        <Text variant={"button"} color={"secondary"}>Forgot password?</Text>
+                    </BorderlessButton>
                 </Box>
 
             </Box>
