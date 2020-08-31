@@ -4,7 +4,7 @@ import {Box, Button, Checkbox, Container, Text, TextInput} from "../../component
 import {useFormik} from "formik";
 import * as Yup from 'yup';
 import Footer from "../components/Footer";
-import {AuthenticationRoutes, StackNavigationProps} from "../../components/Navigation";
+import {AuthNavigationProps} from "../../components/Navigation";
 import {BorderlessButton} from "react-native-gesture-handler";
 
 const LoginSchema = Yup.object().shape({
@@ -17,7 +17,7 @@ const LoginSchema = Yup.object().shape({
         .required('Required'),
 });
 
-const Login = ({navigation}: StackNavigationProps<AuthenticationRoutes, "Login">) => {
+const Login = ({navigation}: AuthNavigationProps<'Login'>) => {
 
     const password = useRef<RNTextInput>(null);
     const footer = (
@@ -38,7 +38,7 @@ const Login = ({navigation}: StackNavigationProps<AuthenticationRoutes, "Login">
     } = useFormik({
         initialValues: {email: '', password: '', remember: true},
         validationSchema: LoginSchema,
-        onSubmit: () => navigation.navigate("OutfitIdeas"),
+        onSubmit: () => navigation.navigate("Home"),
     });
 
     return (
