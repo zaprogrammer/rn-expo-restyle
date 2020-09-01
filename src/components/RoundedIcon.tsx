@@ -5,13 +5,14 @@ import {Box, Text, Theme} from "./Theme";
 export interface RoundedIconProps {
     name: string;
     size: number;
+    iconRatio: number;
     color: keyof Theme["colors"] | string;
     backgroundColor: keyof Theme["colors"];
 }
 
-const RoundedIcon = ({name, size, color, backgroundColor}: RoundedIconProps) => {
+const RoundedIcon = ({name, size, iconRatio, color, backgroundColor}: RoundedIconProps) => {
 
-    const iconSize = size * 0.7;
+    const iconSize = size * iconRatio;
 
     return (
         <Box
@@ -29,5 +30,9 @@ const RoundedIcon = ({name, size, color, backgroundColor}: RoundedIconProps) => 
         </Box>
     );
 };
+
+RoundedIcon.defaultProps = {
+    iconRatio: 0.7,
+}
 
 export default RoundedIcon;

@@ -12,6 +12,10 @@ const palette = {
     white: "white",
     red: "#FF0000",
     danger: "#FF0058",
+    orange: "#FF7F00",
+    yellow: "#FCD12A",
+    pink: "#FFC0CB",
+    violet: "#7F00FF"
 
 };
 
@@ -28,7 +32,10 @@ export const theme = createTheme({
         white: palette.white,
         danger: palette.danger,
         red: palette.red,
-
+        orange: palette.orange,
+        yellow: palette.yellow,
+        pink: palette.pink,
+        violet: palette.violet,
     },
     spacing: {
         s: 8,
@@ -78,6 +85,12 @@ export const theme = createTheme({
             fontSize: 15,
             fontFamily: "SFProDisplay-Medium",
             textAlign: "center",
+        },
+        header: {
+            fontSize: 12,
+            lineHeight: 24,
+            color: "secondary",
+            fontFamily: "SFProDisplay-Semibold",
         },
     }
 });
