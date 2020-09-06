@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, RoundedIconButton, Text} from "./index";
+import {Box, RoundedIconButton, Text} from "../components";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 interface HeaderProps {
@@ -11,11 +11,14 @@ interface HeaderProps {
     right: {
         icon: string;
         onPress: () => void;
-    }
+    };
+    dark: boolean;
 }
 
-const Header = ({left, title, right}: HeaderProps) => {
+const Header = ({left, title, right, dark}: HeaderProps) => {
     const insets = useSafeAreaInsets();
+    const color = dark ? "secondary" : "white";
+    const backgroundColor = dark ? "slideBg" : "secondary";
 
     return (
         <Box flexDirection={"row"} style={{marginTop: insets.top}}
@@ -24,24 +27,28 @@ const Header = ({left, title, right}: HeaderProps) => {
              paddingHorizontal={"m"}
         >
             <RoundedIconButton
-                onPress={() => left.onPress}
+                onPress={left.onPress}
                 name={left.icon}
-                size={24}
-                color={"white"}
-                backgroundColor={"secondary"}/>
-            <Text
-                variant={"header"}
-                color={"white"}>
+                iconRatio={0.4}
+                size={44}
+                {...{color, backgroundColor}}
+            />
+            <Text variant={"header"} {...{color}}>
                 {title.toUpperCase()}
             </Text>
             <RoundedIconButton
-                onPress={() => right.onPress}
+                onPress={right.onPress}
                 name={right.icon}
-                size={24}
-                color={"white"}
-                backgroundColor={"secondary"}/>
+                iconRatio={0.4}
+                size={44}
+                {...{color, backgroundColor}}
+            />
         </Box>
     );
+};
+
+Header.defaultProps = {
+    dark: false,
 };
 
 export default Header;

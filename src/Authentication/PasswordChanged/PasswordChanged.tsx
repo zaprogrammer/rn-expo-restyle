@@ -1,12 +1,10 @@
 import React from 'react';
 import {AuthNavigationProps} from "../../components/Navigation";
-import {Box, Button, Container, RoundedIcon, RoundedIconButton, Text, useTheme} from "../../components";
+import {Box, Button, Container, RoundedIcon, RoundedIconButton, Text} from "../../components";
 
 const SIZE = 80;
 
 const PasswordChanged = ({navigation}: AuthNavigationProps<"PasswordChanged">) => {
-
-    const theme = useTheme();
 
     return (
         <Container
@@ -16,7 +14,7 @@ const PasswordChanged = ({navigation}: AuthNavigationProps<"PasswordChanged">) =
                     <RoundedIconButton
                         name={"x"}
                         size={60}
-                        color={theme.colors.secondary}
+                        color={"secondary"}
                         backgroundColor={"white"}
                         onPress={() => navigation.pop()}/>
                 </Box>
@@ -25,7 +23,7 @@ const PasswordChanged = ({navigation}: AuthNavigationProps<"PasswordChanged">) =
                 <RoundedIcon
                     name={"check"}
                     size={SIZE}
-                    color={theme.colors.primary}
+                    color={"primary"}
                     backgroundColor={"primaryLight"}/>
             </Box>
             <Text variant={"title1"} marginVertical={"l"} textAlign={"center"}>

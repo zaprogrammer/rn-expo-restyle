@@ -8,6 +8,11 @@ export interface AuthNavigationProps<RouteName extends keyof AuthenticationRoute
     route: RouteProp<AuthenticationRoutes, RouteName>;
 }
 
+export interface HomeNavigationProps<RouteName extends keyof HomeRoutes> {
+    navigation: DrawerNavigationProp<AppRoutes, 'Home'>;
+    route: RouteProp<HomeRoutes, RouteName>;
+}
+
 export type AppRoutes = {
     Authentication: undefined;
     Home: undefined;
@@ -24,4 +29,5 @@ export type AuthenticationRoutes = {
 
 export type HomeRoutes = {
     OutfitIdeas: undefined;
+    FavoritesOutfits: undefined;
 };

@@ -5,6 +5,7 @@ import DrawerItem, {DrawerItemProps} from "./DrawerItem";
 import {width} from '../../helpers/constants';
 import {Image} from "react-native";
 import Header from "../../components/Header";
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 export const DRAWER_WIDTH = width * 0.8;
 const aspectRatio = 2000 / 3000;
@@ -50,6 +51,7 @@ const items: DrawerItemProps[] = [
 
 const Drawer = ({}: DrawerContentComponentProps<DrawerContentOptions>) => {
     const theme = useTheme();
+    const navigation = useNavigation();
 
     return (
         <Box flex={1}>
@@ -61,7 +63,7 @@ const Drawer = ({}: DrawerContentComponentProps<DrawerContentOptions>) => {
                 >
                     <Header
                         title={"Menu"}
-                        left={{icon: "x", onPress: () => true}}
+                        left={{icon: "x", onPress: () => navigation.dispatch(DrawerActions.closeDrawer())}}
                         right={{icon: "shopping-bag", onPress: () => console.log("Pressed")}}
                     />
                 </Box>
@@ -96,10 +98,6 @@ const Drawer = ({}: DrawerContentComponentProps<DrawerContentOptions>) => {
                            height,
                            borderTopLeftRadius: theme.borderRadii.xl
                        }}/>
-                {/*<Box position={"absolute"}*/}
-                {/*     top={0} left={0} bottom={0} right={0}*/}
-                {/*     backgroundColor={"primary"}*/}
-                {/*     borderTopLeftRadius={"xl"}/>*/}
             </Box>
         </Box>
     );

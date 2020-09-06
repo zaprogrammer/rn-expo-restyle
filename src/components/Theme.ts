@@ -7,16 +7,16 @@ const palette = {
     secondaryBlue: "#0C0D34",
     textBody: "rgba(12, 13, 52, 0.5)",
     textHero: "rgba(255, 255, 255, 1)",
-    lightGrey: "#F4F0EF",
     grey: "#F4F0EF",
+    lightGrey: "#FAFAFA",
     white: "white",
     red: "#FF0000",
     danger: "#FF0058",
-    orange: "#FF7F00",
-    yellow: "#FCD12A",
-    pink: "#FFC0CB",
-    violet: "#7F00FF"
-
+    orange: "#FE5E33",
+    yellow: "#FFC641",
+    pink: "#FF87A2",
+    violet: "#442CB9",
+    lightBlue: "#BFEAF5",
 };
 
 
@@ -36,6 +36,7 @@ export const theme = createTheme({
         yellow: palette.yellow,
         pink: palette.pink,
         violet: palette.violet,
+        lightBlue: palette.lightBlue,
     },
     spacing: {
         s: 8,
