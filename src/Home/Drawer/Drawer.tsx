@@ -1,11 +1,12 @@
 import React from 'react';
+import {Image} from "react-native";
 import {DrawerContentComponentProps, DrawerContentOptions} from "@react-navigation/drawer";
+import {DrawerActions, useNavigation} from '@react-navigation/native';
+
 import {assets, Box, Text, useTheme} from "../../components";
 import DrawerItem, {DrawerItemProps} from "./DrawerItem";
 import {width} from '../../helpers/constants';
-import {Image} from "react-native";
 import Header from "../../components/Header";
-import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 export const DRAWER_WIDTH = width * 0.8;
 const aspectRatio = 2000 / 3000;
