@@ -5,6 +5,7 @@ import {useFormik} from "formik";
 import * as Yup from 'yup';
 import Footer from "../components/Footer";
 import {AuthNavigationProps} from "../../components/Navigation";
+import {CommonActions} from "@react-navigation/native";
 
 const SignUpSchema = Yup.object().shape({
     email: Yup.string()
@@ -40,7 +41,10 @@ const SignUp = ({navigation}: AuthNavigationProps<'SignUp'>) => {
     } = useFormik({
         initialValues: {email: '', password: '', passwordConfirmation: ''},
         validationSchema: SignUpSchema,
-        onSubmit: (values) => console.log(values),
+        onSubmit: () => navigation.dispatch(CommonActions.reset({
+            index: 0,
+            routes: [{name: 'Home'}]
+        })),
     });
 
     return (

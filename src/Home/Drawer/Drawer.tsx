@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image} from "react-native";
 import {DrawerContentComponentProps, DrawerContentOptions} from "@react-navigation/drawer";
-import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {CommonActions, DrawerActions, useNavigation} from '@react-navigation/native';
 
 import {assets, Box, Text, useTheme} from "../../components";
 import DrawerItem, {DrawerItemProps} from "./DrawerItem";
@@ -45,7 +45,13 @@ const items: DrawerItemProps[] = [
     {
         icon: "log-out",
         label: "Logout",
-        screen: "Logout",
+        onPress: (navigation) =>
+            navigation.dispatch(CommonActions.reset({
+                index: 0,
+                routes: [
+                    {name: 'Authentication'},
+                ]
+            })),
         color: "secondary"
     },
 ]
@@ -56,7 +62,7 @@ const Drawer = ({}: DrawerContentComponentProps<DrawerContentOptions>) => {
 
     return (
         <Box flex={1}>
-            <Box flex={0.2} backgroundColor={"white"}>
+            <Box flex={0.2} backgroundColor={"background"}>
                 <Box position={"absolute"}
                      top={0} left={0} bottom={0} right={0}
                      backgroundColor={"secondary"}
@@ -71,10 +77,10 @@ const Drawer = ({}: DrawerContentComponentProps<DrawerContentOptions>) => {
             </Box>
             <Box flex={0.8}>
                 <Box flex={1} backgroundColor={"secondary"}/>
-                <Box flex={1} backgroundColor={"white"}/>
+                <Box flex={1} backgroundColor={"background"}/>
                 <Box position={"absolute"}
                      top={0} left={0} bottom={0} right={0}
-                     backgroundColor={"white"}
+                     backgroundColor={"background"}
                      borderTopLeftRadius={"xl"}
                      borderBottomRightRadius={"xl"}
                      justifyContent={"center"}
@@ -88,11 +94,11 @@ const Drawer = ({}: DrawerContentComponentProps<DrawerContentOptions>) => {
                     </Box>
 
                     {
-                        items.map(item => (<DrawerItem key={item.screen} {...item} />))
+                        items.map((item) => (<DrawerItem key={item.icon} {...item} />))
                     }
                 </Box>
             </Box>
-            <Box width={DRAWER_WIDTH} overflow={"hidden"} height={height * 0.61} backgroundColor={"white"}>
+            <Box width={DRAWER_WIDTH} overflow={"hidden"} height={height * 0.61} backgroundColor={"background"}>
                 <Image source={assets[2]}
                        style={{
                            width: DRAWER_WIDTH,

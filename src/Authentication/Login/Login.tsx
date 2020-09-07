@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import Footer from "../components/Footer";
 import {AuthNavigationProps} from "../../components/Navigation";
 import {BorderlessButton} from "react-native-gesture-handler";
+import {CommonActions} from "@react-navigation/native";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -38,7 +39,10 @@ const Login = ({navigation}: AuthNavigationProps<'Login'>) => {
     } = useFormik({
         initialValues: {email: '', password: '', remember: true},
         validationSchema: LoginSchema,
-        onSubmit: () => navigation.navigate("Home"),
+        onSubmit: () => navigation.dispatch(CommonActions.reset({
+            index: 0,
+            routes: [{name: 'Home'}]
+        })),
     });
 
     return (

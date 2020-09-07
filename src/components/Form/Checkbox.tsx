@@ -25,8 +25,8 @@ const Checkbox = ({label, checked, onChange}: CheckboxProps) => {
                     borderWidth={1}
                     borderColor={"primary"}
                     justifyContent={"center"}
-                    backgroundColor={checked ? "primary" : "white"}>
-                    <Icon name={"check"} color={theme.colors.white}/>
+                    backgroundColor={checked ? "primary" : "background"}>
+                    <Icon name={"check"} color={theme.colors.background}/>
                 </Box>
                 <Text variant={"button"}>{label}</Text>
             </Box>

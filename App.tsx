@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import {ThemeProvider} from "@shopify/restyle";
+import {createStackNavigator} from "@react-navigation/stack";
+import {ThemeProvider} from "./src/components/Theme";
+import {AppRoutes} from "./src/components/Navigation";
 import {assets as authenticationAssets, AuthenticationNavigator} from "./src/Authentication";
 import {LoadAssets} from "./src/components";
-import {theme} from "./src/components/Theme";
-import {createStackNavigator} from "@react-navigation/stack";
 import {HomeNavigator} from "./src/Home";
-import {AppRoutes} from "./src/components/Navigation";
 
 const fonts = {
     "SFProDisplay-Bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
@@ -20,7 +19,7 @@ const AppStack = createStackNavigator<AppRoutes>();
 
 const App = () => {
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
             <LoadAssets {...{fonts, assets}}>
                 <SafeAreaProvider>
                     <AppStack.Navigator headerMode={"none"}>

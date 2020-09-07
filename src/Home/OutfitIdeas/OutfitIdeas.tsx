@@ -33,7 +33,7 @@ const OutfitIdeas = ({navigation}: HomeNavigationProps<"OutfitIdeas">) => {
     const aIndex = useTransition(currentIndex);
 
     return (
-        <Box flex={1} backgroundColor={"white"}>
+        <Box flex={1} backgroundColor={"background"}>
             <Header
                 left={{icon: "menu", onPress: () => navigation.openDrawer()}}
                 title={"Outfit Ideas"}

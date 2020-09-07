@@ -11,10 +11,10 @@ const Background = ({}: BackgroundProps) => {
     return (
         <Box style={StyleSheet.absoluteFillObject}>
             <Box flex={1 / 3} backgroundColor={"lightBlue"}>
-                <Box flex={1} backgroundColor={"white"} borderBottomRightRadius={"xl"}/>
+                <Box flex={1} backgroundColor={"background"} borderBottomRightRadius={"xl"}/>
             </Box>
             <Box flex={1 / 3}>
-                <Box flex={1} backgroundColor={"white"}/>
+                <Box flex={1} backgroundColor={"background"}/>
                 <Box flex={1} backgroundColor={"secondary"}/>
                 <Image
                     source={require('../../../assets/patterns/02.jpg')}

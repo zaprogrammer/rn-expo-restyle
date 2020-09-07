@@ -27,7 +27,7 @@ const Container = ({children, footer, pattern}: ContainerProps) => {
         <KeyboardAwareScrollView scrollEnabled={false}>
             <Box height={height + (Platform.OS === "android" ? Constants.statusBarHeight : 0)}
                  backgroundColor={"secondary"}>
-                <Box backgroundColor={"white"}>
+                <Box backgroundColor={"background"}>
                     <Box borderBottomLeftRadius={"xl"} overflow={"hidden"} height={imgHeight * 0.61}>
                         <Image source={asset}
                                style={{width, height: imgHeight, borderBottomLeftRadius: theme.borderRadii.xl}}/>
@@ -46,7 +46,7 @@ const Container = ({children, footer, pattern}: ContainerProps) => {
                         padding={"xl"}
                         borderRadius={"xl"}
                         borderTopLeftRadius={"zero"}
-                        backgroundColor={"white"}>
+                        backgroundColor={"background"}>
 
                         {children}
                     </Box>

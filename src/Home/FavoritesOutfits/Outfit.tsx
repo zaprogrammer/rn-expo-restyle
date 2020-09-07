@@ -28,7 +28,7 @@ const Outfit = ({outfit, width}: OutfitProps) => {
                 style={{backgroundColor: outfit.color, width, height: width * outfit.aspectRatio}}>
 
                 {selected && (
-                    <RoundedIcon backgroundColor={"primary"} color={"white"} size={24} name={"check"}/>
+                    <RoundedIcon backgroundColor={"primary"} color={"background"} size={24} name={"check"}/>
                 )}
             </Box>
         </BorderlessButton>

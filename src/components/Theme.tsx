@@ -1,5 +1,18 @@
-import {createBox, createText, createTheme, useTheme as useReTheme} from '@shopify/restyle'
+import React, {ReactNode} from "react";
 import {ImageStyle, TextStyle, ViewStyle} from "react-native";
+import {
+    createBox,
+    createText,
+    createTheme,
+    ThemeProvider as RestyleThemeProvider,
+    useTheme as useReTheme
+} from '@shopify/restyle'
+
+export const ThemeProvider = ({children}: { children: ReactNode }) => (
+    <RestyleThemeProvider {...{theme}}>
+        {children}
+    </RestyleThemeProvider>
+);
 
 const palette = {
     primaryCyan: "#2CB9B0",
@@ -31,7 +44,7 @@ export const theme = createTheme({
         grey: palette.grey,
         slideBg: palette.lightGrey,
         darkGrey: palette.darkGrey,
-        white: palette.white,
+        background: palette.white,
         danger: palette.danger,
         red: palette.red,
         orange: palette.orange,

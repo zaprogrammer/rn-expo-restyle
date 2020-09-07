@@ -17,7 +17,7 @@ interface HeaderProps {
 
 const Header = ({left, title, right, dark}: HeaderProps) => {
     const insets = useSafeAreaInsets();
-    const color = dark ? "secondary" : "white";
+    const color = dark ? "secondary" : "background";
     const backgroundColor = dark ? "slideBg" : "secondary";
 
     return (

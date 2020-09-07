@@ -16,7 +16,7 @@ export const assets = [picture.src];
 const Welcome = ({navigation}: AuthNavigationProps<"Welcome">) => {
 
     return (
-        <Box flex={1} backgroundColor={"white"}>
+        <Box flex={1} backgroundColor={"background"}>
             <Box flex={1} borderBottomRightRadius={"xl"} backgroundColor={"grey"}>
                 <Image source={picture.src}
                        style={{
@@ -35,7 +35,7 @@ const Welcome = ({navigation}: AuthNavigationProps<"Welcome">) => {
                     bottom={0}/>
                 <Box
                     flex={1}
-                    backgroundColor={"white"}
+                    backgroundColor={"background"}
                     borderTopLeftRadius={"xl"}
                     alignItems={"center"}
                     justifyContent={"space-evenly"}

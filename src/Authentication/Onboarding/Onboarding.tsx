@@ -100,7 +100,7 @@ export default Onboarding;
 const useStyles = makeStyle((theme: Theme) => ({
     container: {
         flex: 1,
-        backgroundColor: "white"
+        backgroundColor: "background"
     },
     slider: {
         height: SLIDE_HEIGHT,
@@ -116,7 +116,7 @@ const useStyles = makeStyle((theme: Theme) => ({
     },
     footerContent: {
         flex: 1,
-        backgroundColor: "white",
+        backgroundColor: "background",
         borderTopStartRadius: theme.borderRadii.xl
     },
     pagination: {
