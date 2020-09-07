@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useLayoutEffect, useRef} from 'react';
 import {Dimensions} from 'react-native';
 import {Box, useTheme} from "../../../components";
 import {Theme} from "../../../components/Theme";
-import Underlay, {MARGIN} from "./Underlay";
+import Underlay from "./Underlay";
 import {lerp} from "./Scale";
 import moment from "moment";
+import {Transition, Transitioning, TransitioningView} from "react-native-reanimated";
 
 const {width: wWidth} = Dimensions.get("window");
 const aspectRatio = 195 / 305;
+const MARGIN = "xl";
+const transition = (
+    <Transition.Together>
+        <Transition.In type={"fade"} durationMs={650} interpolation={"easeInOut"}/>
+        <Transition.In type={"slide-bottom"} durationMs={650} interpolation={"easeInOut"}/>
+    </Transition.Together>
+)
 
 export interface DataPoint {
     date: number;
@@ -23,6 +31,7 @@ interface GraphProps {
 }
 
 const Graph = ({data, startDate, numberOfMonths}: GraphProps) => {
+    const ref = useRef<TransitioningView>(null);
     const theme = useTheme();
     const canvasWidth = wWidth - theme.spacing.m * 2;
     const canvasHeight = canvasWidth * aspectRatio;
@@ -33,6 +42,10 @@ const Graph = ({data, startDate, numberOfMonths}: GraphProps) => {
     const minY = Math.min(...values);
     const maxY = Math.max(...values);
 
+    useLayoutEffect(() => {
+        ref.current?.animateNextTransition();
+    }, []);
+
     return (
         <Box marginTop={MARGIN} paddingBottom={MARGIN} paddingLeft={MARGIN}>
             <Underlay
@@ -42,7 +55,10 @@ const Graph = ({data, startDate, numberOfMonths}: GraphProps) => {
                 numberOfMonths={numberOfMonths}
                 step={step}
             />
-            <Box {...{width, height}}>
+            <Transitioning.View
+                style={{width, height, overflow: "hidden"}}
+                ref={ref}
+                transition={transition}>
                 {data.map(point => {
                     const i = Math.round(moment.duration(moment(point.date).diff(startDate)).asMonths());
                     return (
@@ -77,7 +93,7 @@ const Graph = ({data, startDate, numberOfMonths}: GraphProps) => {
                     )
                 })
                 }
-            </Box>
+            </Transitioning.View>
         </Box>
     );
 };

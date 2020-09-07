@@ -4,7 +4,7 @@ import {Box, Text, useTheme} from "../../../components";
 import {lerp} from "./Scale";
 import moment from "moment";
 
-export const MARGIN = "xl";
+const MARGIN = "xl";
 
 interface UnderlayProps {
     minY: number;
@@ -32,7 +32,7 @@ const Underlay = ({minY, maxY, startDate, numberOfMonths, step}: UnderlayProps) 
                                 height={row_height}
                                 style={{top: progress === 0 ? row_height / 2 : (progress === 1 ? -row_height / 2 : 0)}}
                             >
-                                <Box width={MARGIN} paddingRight={"s"}>
+                                <Box width={theme.spacing[MARGIN]} paddingRight={"s"}>
                                     <Text color={"darkGrey"} textAlign={"right"}>
                                         {Math.round(lerp(minY, maxY, progress))}
                                     </Text>
